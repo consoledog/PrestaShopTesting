@@ -1,0 +1,22 @@
+{
+  "name": "prestashoptesting",
+  "version": "1.0.0",
+  "description": "This repo is considered to be repository for testing script related to PrestaShop",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "prettier": "^3.7.4",
+    "typescript": "^5.9.3"
+  }
+}
