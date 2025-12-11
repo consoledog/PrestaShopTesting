@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Search existing product",
+        "keywordToSearch": "Hummingbird printed sweater",
+        "expectedNumberOfProducts": 1
+    },
+    {
+        "name": "Search by partial term",
+        "keywordToSearch": "Hummingbird",
+        "expectedNumberOfProducts": 5
+    },
+    {
+        "name": "Search non-existing product",
+        "keywordToSearch": "This product does not exist",
+        "expectedNumberOfProducts": 0
+    }
+]
