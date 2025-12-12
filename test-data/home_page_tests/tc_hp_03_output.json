@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Hummingbird Printed T-Shirt",
+    "currentPrice": "€22.94",
+    "oldPrice": "€28.68"
+  },
+  {
+    "name": "Hummingbird Printed Sweater",
+    "currentPrice": "€34.46",
+    "oldPrice": "€43.08"
+  },
+  {
+    "name": "The Best Is Yet To Come' Framed poster",
+    "currentPrice": "€34.80",
+    "oldPrice": null
+  },
+  {
+    "name": "The Adventure Begins Framed poster",
+    "currentPrice": "€34.80",
+    "oldPrice": null
+  },
+  {
+    "name": "Today Is A Good Day Framed poster",
+    "currentPrice": "€34.80",
+    "oldPrice": null
+  },
+  {
+    "name": "Mug The Best Is Yet To Come",
+    "currentPrice": "€14.28",
+    "oldPrice": null
+  },
+  {
+    "name": "Mug The Adventure Begins",
+    "currentPrice": "€14.28",
+    "oldPrice": null
+  },
+  {
+    "name": "Mug Today Is A Good Day",
+    "currentPrice": "€14.28",
+    "oldPrice": null
+  }
+]

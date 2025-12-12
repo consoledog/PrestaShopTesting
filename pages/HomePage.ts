@@ -1,6 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 import { TopMenu } from './HeaderTop';
-import { PopularProductsPage } from './PopularProductsPage';
+import { PopularProductsSection } from '../components/PopularProductsSection';
 import { TopMenuNavigation } from '../helpers/TopMenuNavigation';
 import { GlobalConstants } from '../helpers/GlobalConstants';
 
@@ -8,12 +8,12 @@ export class HomePage {
     readonly page: Page;
     readonly url: string
     readonly topMenu: TopMenu
-    readonly popularProductsPage: PopularProductsPage;
+    readonly popularProductsSection: PopularProductsSection;
 
     constructor(page: Page) {
         this.page = page;
         this.topMenu = new TopMenu(page)
-        this.popularProductsPage = new PopularProductsPage(page);
+        this.popularProductsSection = new PopularProductsSection(page);
         this.url = `${GlobalConstants.baseUrl}/#/en/front`;
     }
 
