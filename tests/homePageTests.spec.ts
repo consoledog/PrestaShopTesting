@@ -74,7 +74,7 @@ for (const { name, keywordToSearch, expectedNumberOfProducts } of testData) {
     });
 }
 
-test('TC-HP-03 – Verify popular products section', async ({ page }) => {
+test('TC-HP-03 – Verify popular products section', async () => {
     const actual = await homePage.popularProductsSection.getAllProductsData();
 
     await test.step('Check product count', async () => {
@@ -109,3 +109,13 @@ test('TC-HP-03 – Verify popular products section', async ({ page }) => {
         });
     });
 });
+
+test('TC-HP-04 – Verify “20% OFF ON CLOTHES” banner link', async () => {
+    await test.step('Click on Discount link', async () => {
+        await expect(homePage.dicountLink).toBeVisible();
+        await homePage.clickOnDiscountLink();
+        await expect(homePage.popularProductsSection.titleLocator).toBeVisible();
+    });
+});
+
+

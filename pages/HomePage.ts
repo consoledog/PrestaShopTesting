@@ -1,4 +1,4 @@
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator, FrameLocator } from '@playwright/test';
 import { TopMenu } from './HeaderTop';
 import { PopularProductsSection } from '../components/PopularProductsSection';
 import { TopMenuNavigation } from '../helpers/TopMenuNavigation';
@@ -6,15 +6,19 @@ import { GlobalConstants } from '../helpers/GlobalConstants';
 
 export class HomePage {
     readonly page: Page;
+    readonly frame: FrameLocator;
     readonly url: string
     readonly topMenu: TopMenu
     readonly popularProductsSection: PopularProductsSection;
+    readonly dicountLink: Locator;
 
     constructor(page: Page) {
         this.page = page;
+        this.frame = page.frameLocator(GlobalConstants.iFramePath);
+        this.url = `${GlobalConstants.baseUrl}/#/en/front`;
         this.topMenu = new TopMenu(page)
         this.popularProductsSection = new PopularProductsSection(page);
-        this.url = `${GlobalConstants.baseUrl}/#/en/front`;
+        this.dicountLink = this.frame.locator("//img[@class='img-fluid']")
     }
 
     async goToHomePage() {
@@ -48,6 +52,10 @@ export class HomePage {
             this.topMenu.searchInput.press('Enter'),
             productsList.waitFor({ state: 'visible' }),
         ]);
+    }
+
+    async clickOnDiscountLink(): Promise<void> {
+        await this.dicountLink.click();
     }
 
 }
