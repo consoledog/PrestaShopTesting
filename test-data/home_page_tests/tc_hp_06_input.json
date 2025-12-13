@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Valid email",
+        "expectedResult": "success",
+        "expectedMessage": "You have successfully subscribed to this newsletter.",
+        "testType": "valid"
+    },
+    {
+        "name": "Already used email",
+        "expectedResult": "failure",
+        "expectedMessage": "This email address is already registered.",
+        "testType": "alreadyUsed"
+    },
+    {
+        "name": "Email without domain, like 'word'",
+        "expectedResult": "invalid",
+        "expectedMessage": "Please include an '@' in the email address.",
+        "testType": "noAt"
+    },
+    {
+        "name": "Email without .com like 'word@'",
+        "expectedResult": "invalid",
+        "expectedMessage": "Please enter a part following '@'.",
+        "testType": "noDomain"
+    },
+    {
+        "name": "Email without local part like '@gmail.com'",
+        "expectedResult": "invalid",
+        "expectedMessage": "Please enter a part followed by '@'.",
+        "testType": "noLocalPart"
+    }
+]

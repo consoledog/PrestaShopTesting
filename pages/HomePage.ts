@@ -1,15 +1,19 @@
 import { Page, Locator, FrameLocator } from '@playwright/test';
 import { TopMenu } from './HeaderTop';
 import { PopularProductsSection } from '../components/PopularProductsSection';
+import { NewsLetterSection } from '../components/NewsLetterSection';
 import { TopMenuNavigation } from '../helpers/TopMenuNavigation';
 import { GlobalConstants } from '../helpers/GlobalConstants';
+import { OnSaleSection } from 'components/OnSaleSection';
 
 export class HomePage {
     readonly page: Page;
     readonly frame: FrameLocator;
     readonly url: string
     readonly topMenu: TopMenu
+    readonly onSaleSection: OnSaleSection;
     readonly popularProductsSection: PopularProductsSection;
+    readonly newsLetterSection: NewsLetterSection;
     readonly dicountLink: Locator;
 
     constructor(page: Page) {
@@ -17,7 +21,9 @@ export class HomePage {
         this.frame = page.frameLocator(GlobalConstants.iFramePath);
         this.url = `${GlobalConstants.baseUrl}/#/en/front`;
         this.topMenu = new TopMenu(page)
+        this.onSaleSection = new OnSaleSection(page);
         this.popularProductsSection = new PopularProductsSection(page);
+        this.newsLetterSection = new NewsLetterSection(page, this.frame);
         this.dicountLink = this.frame.locator("//img[@class='img-fluid']")
     }
 
