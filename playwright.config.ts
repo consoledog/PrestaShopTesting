@@ -29,7 +29,7 @@ export default defineConfig({
     // baseURL: 'http://localhost:3000',
 
     /* Run in headless mode by default */
-    headless: true,
+    headless: false,
 
     /* Retry-related debugging artifacts */
     trace: 'on-first-retry',

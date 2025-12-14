@@ -1,6 +1,7 @@
 import { Page, Locator, FrameLocator } from '@playwright/test';
 import { SortOption } from '../helpers/SortOption';
 import { GlobalConstants } from '../helpers/GlobalConstants';
+import { ProductData } from '../models/ProductData';
 
 export abstract class BaseCategoryPage {
     readonly page: Page;
@@ -120,5 +121,24 @@ export abstract class BaseCategoryPage {
             .locator('.dropdown-menu .select-list')
             .filter({ hasText: option })
             .click();
+    }
+
+    async getAllProducts(): Promise<ProductData[]> {
+        const productsCount = await this.productCards.count();
+        const products: ProductData[] = [];
+
+        for (let index = 0; index < productsCount; index++) {
+            const card = this.productCards.nth(index);
+
+            const name = await card.locator('.product-title a').innerText();
+            const currentPrice = await card.locator('.price').first().innerText();
+
+            products.push({
+                name,
+                currentPrice
+            });
+        }
+
+        return products;
     }
 }
