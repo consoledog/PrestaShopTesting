@@ -141,4 +141,17 @@ export abstract class BaseCategoryPage {
 
         return products;
     }
+
+    getFilterOptionsBySectionName(sectionName: string): Locator {
+        const section = this.filterSections.filter({ hasText: sectionName }).first();
+        return section.locator('label');
+    }
+
+    async toggleFilterOption(sectionName: string, optionText: string): Promise<void> {
+        const options = this.getFilterOptionsBySectionName(sectionName);
+        const option = options.filter({ hasText: optionText }).first();
+        await option.click();
+    }
+
+
 }

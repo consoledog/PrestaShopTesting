@@ -23,7 +23,7 @@ test.beforeEach(async ({ page }) => {
     });
 });
 
-test('TC-CAT-01 – Verify sort dropdown', async ({ page }) => {
+test('TC-CAT-01 – Verify sort dropdown', async () => {
     await test.step('Sort accessories by Price, low to high', async () => {
         await homePage.clickOnAccessories();
         await accessoriesPage.sortBy(SortOption.PRICE_LOW_TO_HIGH);
@@ -38,5 +38,24 @@ test('TC-CAT-01 – Verify sort dropdown', async ({ page }) => {
 
         // Compare two sorted arrays
         expect(pricesAfterSort).toEqual(pricesBeforeSort.sort((a, b) => a - b));
+    });
+});
+
+test.skip('TC-CAT-02 – Verify filter by Size', async () => {
+    await test.step('Filter clothes by size S (2)', async () => {
+        await homePage.clickOnClothes();
+        await clothesPage.toggleFilterOption('Size', 'S (2)');
+    });
+
+    await test.step('Verify number of products in S Size filter', async () => {
+        const sizeOptions = clothesPage.getFilterOptionsBySectionName('Size');
+        const sOption = sizeOptions.filter({ hasText: 'S (2)' }).first();
+        const labelText = await sOption.innerText();
+
+        const match = labelText.match(/\((\d+)\)/);
+        const expectedCount = match ? Number(match[1]) : 0;
+
+        const products: ProductData[] = await clothesPage.getAllProducts();
+        expect(products.length).toBe(expectedCount);
     });
 });
