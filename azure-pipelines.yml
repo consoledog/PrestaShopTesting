@@ -1,6 +1,9 @@
 trigger:
   - main
 
+variables:
+- group: pvw-secrets
+
 pr:
   branches:
     include:
